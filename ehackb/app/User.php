@@ -36,4 +36,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Event::class);
     }
+
+    public function getFullName()
+    {
+        return trim($this->first_name . ' ' . $this->last_name);
+    }
 }
