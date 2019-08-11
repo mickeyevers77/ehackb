@@ -14,6 +14,20 @@
             </li>
 
             @if(Auth::user())
+                @if(Auth::user()->is_admin)
+                    <li class="nav-item dropdown {{ Request::is('admin/*') ? 'active' : '' }}">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Admin
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/admin/users">Users</a>
+                            <a class="dropdown-item" href="/admin/events">Events</a>
+                            <a class="dropdown-item" href="/admin/news">News</a>
+                        </div>
+                    </li>
+                @endif
+
                 <li class="nav-item {{ Request::is('profile') ? 'active' : '' }}">
                     <a class="nav-link" href="/profile">{{ Auth::user()->getFullName() }}</a>
                 </li>

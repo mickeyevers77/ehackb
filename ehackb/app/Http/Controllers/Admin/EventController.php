@@ -14,12 +14,12 @@ class EventController extends Controller
 
     public function index()
     {
-        //
+        return view('admin.events.index');
     }
 
     public function create()
     {
-        //
+        return view('admin.events.edit');
     }
 
     public function store(Request $request)
