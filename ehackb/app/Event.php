@@ -27,4 +27,9 @@ class Event extends Model
         'starts_at',
         'ends_at',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

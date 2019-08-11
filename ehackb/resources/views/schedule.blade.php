@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-auto">
-                <h2 class="text-white m-4 text-uppercase">News</h2>
+                <h2 class="text-white m-4 text-uppercase">Schedule</h2>
             </div>
         </div>
         <div class="row">
@@ -31,16 +31,6 @@
                     <div class="card-body">
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <h2 class="text-white m-4 text-uppercase">Locatie</h2>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <h2 class="text-white m-4 text-uppercase">Sponsors</h2>
             </div>
         </div>
     </div>
