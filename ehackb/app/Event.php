@@ -32,4 +32,9 @@ class Event extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function availableSlots()
+    {
+        return $this->slots - $this->users()->count();
+    }
 }

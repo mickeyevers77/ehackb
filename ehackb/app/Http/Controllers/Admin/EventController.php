@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -70,5 +71,17 @@ class EventController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function enroll(Event $event)
+    {
+        $event->users()->attach(Auth::user());
+        return redirect()->back();
+    }
+
+    public function cancel(Event $event)
+    {
+        $event->users()->detach(Auth::user());
+        return redirect()->back();
     }
 }

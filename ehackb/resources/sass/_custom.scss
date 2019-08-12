@@ -9,3 +9,18 @@
     src: url(../fonts/8bitOperatorPlus-Bold.ttf);
     font-weight: bold;
 }
+
+#location {
+    background-image: url('/img/map.png');
+    background-size: cover;
+    background-position: center center;
+
+    &-overlay {
+        background: #343a4099;
+    }
+}
+
+.travel-icon {
+    font-size: 3rem;
+    margin: 16px;
+}
