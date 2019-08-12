@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Event;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\UpdateEventRequest;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -19,12 +22,23 @@ class EventController extends Controller
 
     public function create()
     {
-        return view('admin.events.edit');
+        return view('admin.events.edit')
+            ->with('event', new Event);
     }
 
-    public function store(Request $request)
+    public function store(StoreEventRequest $request)
     {
-        //
+        $event = Event::create([
+            'title'             => $request['title'],
+            'speaker'           => $request['speaker'],
+            'image'             => '',
+            'short_description' => $request['short_description'],
+            'long_description'  => $request['long_description'],
+            'slots'             => $request['slots'],
+        ]);
+        $event->save();
+
+        return redirect()->route('events.index');
     }
 
     public function show($id)
@@ -32,14 +46,25 @@ class EventController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit(Event $event)
     {
-        //
+        return view('admin.events.edit')
+            ->with('event', $event);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateEventRequest $request, Event $event)
     {
-        //
+        $event->update([
+            'title'             => $request['title'],
+            'speaker'           => $request['speaker'],
+            'image'             => '',
+            'short_description' => $request['short_description'],
+            'long_description'  => $request['long_description'],
+            'slots'             => $request['slots'],
+        ]);
+        $event->save();
+
+        return redirect()->route('events.index');
     }
 
     public function destroy($id)

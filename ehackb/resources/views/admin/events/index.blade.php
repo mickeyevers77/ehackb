@@ -7,7 +7,7 @@
                 <h2 class="text-white mt-4 mb-4 text-uppercase">Events</h2>
             </div>
             <div class="col-auto">
-                <a class="btn btn-sm mt-4 mb-4 btn-light" href="/admin/events/create">Create New</a>
+                <a class="btn btn-sm mt-4 mb-4 btn-light" href="{{ route('events.create') }}">Create New</a>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
                                 <td>{{ $event->starts_at }}</td>
                                 <td>{{ $event->ends_at }}</td>
                                 <td class="text-right">
-                                    <a class="btn btn-sm btn-light" href="#">Edit</a>
+                                    <a class="btn btn-sm btn-light" href="{{ route('events.edit', $event) }}">Edit</a>
                                     <a class="btn btn-sm btn-danger" href="#">Delete</a>
                                 </td>
                             </tr>

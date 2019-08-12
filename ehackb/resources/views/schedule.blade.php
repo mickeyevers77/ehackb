@@ -7,31 +7,18 @@
                 <h2 class="text-white m-4 text-uppercase">Schedule</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">{{ __('News') }}</div>
+        <div class="row justify-content-center">
+            @foreach(\App\Event::all() as $event)
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">{{ $event->title }}</div>
 
-                    <div class="card-body">
+                        <div class="card-body">
+                            {{ $event->short_description }}
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">{{ __('News') }}</div>
-
-                    <div class="card-body">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">{{ __('News') }}</div>
-
-                    <div class="card-body">
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection

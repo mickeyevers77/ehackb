@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\updateProfileRequest;
+use App\Http\Requests\UpdateProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,13 +18,14 @@ class ProfileController extends Controller
         return view('profile');
     }
 
-    public function update(updateProfileRequest $request)
+    public function update(UpdateProfileRequest $request)
     {
         $user = Auth::user();
 
         $user->update([
             'first_name' => $request['first_name'],
             'last_name'  => $request['last_name'],
+            'email'      => $request['email'],
         ]);
         $user->save();
 

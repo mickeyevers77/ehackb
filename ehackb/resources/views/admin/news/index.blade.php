@@ -7,7 +7,7 @@
                 <h2 class="text-white mt-4 mb-4 text-uppercase">News</h2>
             </div>
             <div class="col-auto">
-                <a class="btn btn-sm mt-4 mb-4 btn-light" href="/admin/news/create">Create New</a>
+                <a class="btn btn-sm mt-4 mb-4 btn-light" href="{{ route('news.create') }}">Create New</a>
             </div>
         </div>
 
@@ -27,7 +27,7 @@
                                 <td>{{ $news->title }}</td>
                                 <td>{{ $news->published_at }}</td>
                                 <td class="text-right">
-                                    <a class="btn btn-sm btn-light" href="#">Edit</a>
+                                    <a class="btn btn-sm btn-light" href="{{ route('news.edit', $news) }}">Edit</a>
                                     <a class="btn btn-sm btn-danger" href="#">Delete</a>
                                 </td>
                             </tr>
