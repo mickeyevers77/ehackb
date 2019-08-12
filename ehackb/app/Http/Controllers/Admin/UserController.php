@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
+use App\User;
 
 class UserController extends Controller
 {
@@ -22,7 +24,7 @@ class UserController extends Controller
         //
     }
 
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
         //
     }
@@ -37,13 +39,14 @@ class UserController extends Controller
         //
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, User $user)
     {
         //
     }
 
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }

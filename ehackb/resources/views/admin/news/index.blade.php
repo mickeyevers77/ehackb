@@ -16,6 +16,7 @@
                 <table class="table table-dark table-borderless table-hover">
                     <thead class="thead-light">
                         <tr>
+                            <th scope="col">Image</th>
                             <th scope="col">Title</th>
                             <th scope="col">Published At</th>
                             <th class="text-right" scope="col">Actions</th>
@@ -24,11 +25,20 @@
                     <tbody>
                         @foreach(\App\News::all() as $news)
                             <tr>
+                                <td>
+                                    <div class="square-image" style="background-image: url('{{ $news->getImage('thumb') }}'); width: 50px; height: 50px;"></div>
+                                </td>
                                 <td>{{ $news->title }}</td>
                                 <td>{{ $news->published_at }}</td>
                                 <td class="text-right">
                                     <a class="btn btn-sm btn-light" href="{{ route('news.edit', $news) }}">Edit</a>
-                                    <a class="btn btn-sm btn-danger" href="#">Delete</a>
+                                    <label class="d-inline btn btn-sm btn-danger pointer" for="delete-{{ $news->id }}">Delete</label>
+
+                                    <form class="hidden" action="{{ route('news.destroy', $news) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <input type="submit" id="delete-{{ $news->id }}" class="d-none">
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

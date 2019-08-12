@@ -16,18 +16,29 @@
                 <table class="table table-dark table-borderless table-hover">
                     <thead class="thead-light">
                         <tr>
+                            <th scope="col">Image</th>
                             <th scope="col">Title</th>
-                            <th scope="col">Published At</th>
+                            <th scope="col">Link</th>
                             <th class="text-right" scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach(\App\Sponsor::all() as $sponsor)
                             <tr>
+                                <td>
+                                    <div class="square-image" style="background-image: url('{{ $sponsor->getImage('thumb') }}'); width: 50px; height: 50px;"></div>
+                                </td>
+                                <td>{{ $sponsor->title }}</td>
                                 <td>{{ $sponsor->link }}</td>
                                 <td class="text-right">
-                                    <a class="btn btn-sm btn-light" href="{{ route('sponsors.edit', $sponsor) }}">Edit</a>
-                                    <a class="btn btn-sm btn-danger" href="#">Delete</a>
+                                    <a class="d-inline btn btn-sm btn-light" href="{{ route('sponsors.edit', $sponsor) }}">Edit</a>
+                                    <label class="d-inline btn btn-sm btn-danger pointer" for="delete-{{ $sponsor->id }}">Delete</label>
+
+                                    <form class="hidden" action="{{ route('sponsors.destroy', $sponsor) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <input type="submit" id="delete-{{ $sponsor->id }}" class="d-none">
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

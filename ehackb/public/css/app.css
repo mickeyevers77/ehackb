@@ -11119,11 +11119,20 @@ a.text-dark:focus {
 }
 
 #location-overlay {
-  background: #343a4099;
+  background: #343a40bb;
 }
 
 .travel-icon {
   font-size: 3rem;
   margin: 16px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.square-image {
+  background-position: center center;
+  background-size: cover;
 }
 

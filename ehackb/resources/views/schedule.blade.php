@@ -9,12 +9,21 @@
         </div>
         <div class="row justify-content-center">
             @foreach(\App\Event::all() as $event)
-                <div class="col col-md-6">
-                    <div class="card">
-                        <div class="card-header">{{ $event->title }}</div>
-
+                <div class="col-12 col-md-10 col-lg-8">
+                    <div class="card mb-4">
                         <div class="card-body">
-                            {{ $event->short_description }}
+                            <div class="row">
+                                @if($event->getImage())
+                                    <div class="col-auto">
+                                        <div class="square-image" style="background-image: url('{{ $event->getImage('thumb') }}'); width: 120px; height: 80px;"></div>
+                                    </div>
+                                @endif
+
+                                <div class="col">
+                                    <h4>{{ $event->title }}</h4>
+                                    <div>{{ $event->short_description }}</div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="card-footer">

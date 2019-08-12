@@ -17,7 +17,6 @@ class CreateSponsorsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('link');
-            $table->string('image');
             $table->timestamps();
             $table->softDeletes();
         });

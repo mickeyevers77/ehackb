@@ -6,7 +6,6 @@ use App\Event;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
@@ -29,7 +28,8 @@ class EventController extends Controller
 
     public function store(StoreEventRequest $request)
     {
-        $event = Event::create([
+        $event = new Event();
+        $event->fill([
             'title'             => $request['title'],
             'speaker'           => $request['speaker'],
             'image'             => '',
@@ -38,6 +38,11 @@ class EventController extends Controller
             'slots'             => $request['slots'],
         ]);
         $event->save();
+
+        if ($request->has('image')) {
+            $event->addMediaFromRequest('image')->toMediaCollection('image');
+            $event->save();
+        }
 
         return redirect()->route('events.index');
     }
@@ -65,12 +70,18 @@ class EventController extends Controller
         ]);
         $event->save();
 
+        if ($request->has('image')) {
+            $event->addMediaFromRequest('image')->toMediaCollection('image');
+            $event->save();
+        }
+
         return redirect()->route('events.index');
     }
 
-    public function destroy($id)
+    public function destroy(Event $event)
     {
-        //
+        $event->delete();
+        return redirect()->route('events.index');
     }
 
     public function enroll(Event $event)

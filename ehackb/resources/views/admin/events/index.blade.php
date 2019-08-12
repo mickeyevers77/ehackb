@@ -16,6 +16,7 @@
                 <table class="table table-dark table-borderless table-hover">
                     <thead class="thead-light">
                         <tr>
+                            <th scope="col">Image</th>
                             <th scope="col">Title</th>
                             <th scope="col">Starts At</th>
                             <th scope="col">Ends At</th>
@@ -25,12 +26,21 @@
                     <tbody>
                         @foreach(\App\Event::all() as $event)
                             <tr>
+                                <td>
+                                    <div class="square-image" style="background-image: url('{{ $event->getImage('thumb') }}'); width: 50px; height: 50px;"></div>
+                                </td>
                                 <td>{{ $event->title }}</td>
                                 <td>{{ $event->starts_at }}</td>
                                 <td>{{ $event->ends_at }}</td>
                                 <td class="text-right">
                                     <a class="btn btn-sm btn-light" href="{{ route('events.edit', $event) }}">Edit</a>
-                                    <a class="btn btn-sm btn-danger" href="#">Delete</a>
+                                    <label class="d-inline btn btn-sm btn-danger pointer" for="delete-{{ $event->id }}">Delete</label>
+
+                                    <form class="hidden" action="{{ route('events.destroy', $event) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <input type="submit" id="delete-{{ $event->id }}" class="d-none">
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

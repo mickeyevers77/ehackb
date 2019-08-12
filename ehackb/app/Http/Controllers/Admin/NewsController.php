@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\News;
-use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
@@ -28,13 +27,19 @@ class NewsController extends Controller
 
     public function store(StoreNewsRequest $request)
     {
-        $news = News::create([
+        $news = new News();
+        $news->fill([
             'title'             => $request['title'],
             'image'             => '',
             'short_description' => $request['short_description'],
             'long_description'  => $request['long_description'],
         ]);
         $news->save();
+
+        if ($request->has('image')) {
+            $news->addMediaFromRequest('image')->toMediaCollection('image');
+            $news->save();
+        }
 
         return redirect()->route('news.index');
     }
@@ -60,11 +65,17 @@ class NewsController extends Controller
         ]);
         $news->save();
 
+        if ($request->has('image')) {
+            $news->addMediaFromRequest('image')->toMediaCollection('image');
+            $news->save();
+        }
+
         return redirect()->route('news.index');
     }
 
-    public function destroy($id)
+    public function destroy(News $news)
     {
-        //
+        $news->delete();
+        return redirect()->route('news.index');
     }
 }

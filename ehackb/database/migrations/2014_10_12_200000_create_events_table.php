@@ -17,7 +17,6 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('speaker');
-            $table->string('image');
             $table->text('short_description');
             $table->text('long_description');
             $table->integer('slots');

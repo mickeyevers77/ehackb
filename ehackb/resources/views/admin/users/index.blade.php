@@ -28,7 +28,13 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->is_admin }}</td>
                                 <td class="text-right">
-                                    <a class="btn btn-sm btn-danger" href="#">Delete</a>
+                                    <label class="d-inline btn btn-sm btn-danger pointer" for="delete-{{ $user->id }}">Delete</label>
+
+                                    <form class="hidden" action="{{ route('users.destroy', $user) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <input type="submit" id="delete-{{ $user->id }}" class="d-none">
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

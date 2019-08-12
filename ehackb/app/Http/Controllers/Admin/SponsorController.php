@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSponsorRequest;
+use App\Http\Requests\UpdateSponsorRequest;
 use App\Sponsor;
-use Illuminate\Http\Request;
 
 class SponsorController extends Controller
 {
@@ -24,9 +25,22 @@ class SponsorController extends Controller
             ->with('sponsor', new Sponsor);
     }
 
-    public function store(Request $request)
+    public function store(StoreSponsorRequest $request)
     {
-        //
+        $sponsor = new Sponsor();
+        $sponsor->fill([
+            'title' => $request['title'],
+            'link'  => $request['link'],
+            'image' => '',
+        ]);
+        $sponsor->save();
+
+        if ($request->has('image')) {
+            $sponsor->addMediaFromRequest('image')->toMediaCollection('image');
+            $sponsor->save();
+        }
+
+        return redirect()->route('sponsors.index');
     }
 
     public function show($id)
@@ -40,13 +54,26 @@ class SponsorController extends Controller
             ->with('sponsor', $sponsor);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateSponsorRequest $request, Sponsor $sponsor)
     {
-        //
+        $sponsor->update([
+            'title' => $request['title'],
+            'link'  => $request['link'],
+            'image' => '',
+        ]);
+        $sponsor->save();
+
+        if ($request->has('image')) {
+            $sponsor->addMediaFromRequest('image')->toMediaCollection('image');
+            $sponsor->save();
+        }
+
+        return redirect()->route('sponsors.index');
     }
 
-    public function destroy($id)
+    public function destroy(Sponsor $sponsor)
     {
-        //
+        $sponsor->delete();
+        return redirect()->route('sponsors.index');
     }
 }

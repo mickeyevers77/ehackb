@@ -4,10 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 
-class News extends Model
+class News extends Model implements HasMedia
 {
     use SoftDeletes;
+    use HasMediaTrait;
 
     public $dates = [
         'published_at',
@@ -18,9 +22,35 @@ class News extends Model
 
     protected $fillable = [
         'title',
-        'image',
         'short_description',
         'long_description',
         'published_at',
     ];
+
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('image')->singleFile();
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(100)
+            ->height(100)
+            ->optimize();
+
+        $this->addMediaConversion('home')
+            ->width(180)
+            ->height(120)
+            ->optimize();
+    }
+
+    public function getImage($conversion = '')
+    {
+        if ($this->getMedia('image')->first() !== null) {
+            return $this->getMedia('image')->first()->getUrl($conversion);
+        }
+
+        return null;
+    }
 }
