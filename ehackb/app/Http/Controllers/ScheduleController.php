@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Event;
 
 class ScheduleController extends Controller
 {
@@ -12,6 +12,12 @@ class ScheduleController extends Controller
 
     public function index()
     {
-        return view('schedule');
+        return view('schedule.index');
+    }
+
+    public function show(Event $event)
+    {
+        return view('schedule.show')
+            ->with('event', $event);
     }
 }

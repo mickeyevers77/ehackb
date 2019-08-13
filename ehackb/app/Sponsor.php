@@ -32,8 +32,8 @@ class Sponsor extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')
-            ->width(100)
-            ->height(100)
+            ->width(90)
+            ->height(60)
             ->optimize();
 
         $this->addMediaConversion('home')

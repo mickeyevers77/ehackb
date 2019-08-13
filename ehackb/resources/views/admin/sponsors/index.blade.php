@@ -26,7 +26,7 @@
                         @foreach(\App\Sponsor::all() as $sponsor)
                             <tr>
                                 <td>
-                                    <div class="square-image" style="background-image: url('{{ $sponsor->getImage('thumb') }}'); width: 50px; height: 50px;"></div>
+                                    <div class="image" style="background-image: url('{{ $sponsor->getImage('thumb') }}'); width: 60px; height: 40px;"></div>
                                 </td>
                                 <td>{{ $sponsor->title }}</td>
                                 <td>{{ $sponsor->link }}</td>

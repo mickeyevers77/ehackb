@@ -11131,8 +11131,12 @@ a.text-dark:focus {
   cursor: pointer;
 }
 
-.square-image {
+.image {
   background-position: center center;
   background-size: cover;
+}
+
+a:hover {
+  text-decoration: none;
 }
 

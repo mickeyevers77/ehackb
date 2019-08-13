@@ -21,7 +21,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
-        @include('components/navbar')
+        @include('components.navbar')
 
         <main class="pt-5 mt-5">
             @yield('content')

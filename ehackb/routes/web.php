@@ -17,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index');
+Route::get('/news/{news}', 'HomeController@show');
+Route::get('/schedule/{event}', 'ScheduleController@show');
 Route::get('/schedule', 'ScheduleController@index');
 Route::get('/profile', 'ProfileController@index');
 Route::post('/profile', 'ProfileController@update');
+Route::post('/subscribe', 'HomeController@subscribe');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::resource('news', 'Admin\NewsController');

@@ -35,13 +35,17 @@ class News extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')
-            ->width(100)
-            ->height(100)
+            ->width(90)
+            ->height(60)
             ->optimize();
 
         $this->addMediaConversion('home')
             ->width(180)
             ->height(120)
+            ->optimize();
+
+        $this->addMediaConversion('detail')
+            ->width(960)
             ->optimize();
     }
 

@@ -11,11 +11,11 @@
             @foreach(\App\Event::all() as $event)
                 <div class="col-12 col-md-10 col-lg-8">
                     <div class="card mb-4">
-                        <div class="card-body">
+                        <a href="/schedule/{{ $event->id }}" class="card-body">
                             <div class="row">
                                 @if($event->getImage())
                                     <div class="col-auto">
-                                        <div class="square-image" style="background-image: url('{{ $event->getImage('thumb') }}'); width: 120px; height: 80px;"></div>
+                                        <div class="image" style="background-image: url('{{ $event->getImage('thumb') }}'); width: 120px; height: 80px;"></div>
                                     </div>
                                 @endif
 
@@ -24,7 +24,7 @@
                                     <div>{{ $event->short_description }}</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
 
                         <div class="card-footer">
                             <div class="row no-gutters align-items-center">
@@ -47,4 +47,7 @@
             @endforeach
         </div>
     </div>
+
+    @include('components.newsletter')
+    @include('components.location')
 @endsection

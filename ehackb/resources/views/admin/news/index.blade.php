@@ -26,7 +26,7 @@
                         @foreach(\App\News::all() as $news)
                             <tr>
                                 <td>
-                                    <div class="square-image" style="background-image: url('{{ $news->getImage('thumb') }}'); width: 50px; height: 50px;"></div>
+                                    <div class="image" style="background-image: url('{{ $news->getImage('thumb') }}'); width: 60px; height: 40px;"></div>
                                 </td>
                                 <td>{{ $news->title }}</td>
                                 <td>{{ $news->published_at }}</td>

@@ -14,7 +14,7 @@ class StoreSponsorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+
         ];
     }
 }
