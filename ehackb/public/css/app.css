@@ -11140,3 +11140,13 @@ a:hover {
   text-decoration: none;
 }
 
+.card {
+  border: none;
+}
+
+.navbar,
+.card {
+  border-bottom: 1px solid #282828;
+  box-shadow: #00000008 0 8px;
+}
+

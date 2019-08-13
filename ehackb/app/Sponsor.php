@@ -37,8 +37,8 @@ class Sponsor extends Model implements HasMedia
             ->optimize();
 
         $this->addMediaConversion('home')
-            ->width(180)
-            ->height(120)
+            ->width(450)
+            ->height(300)
             ->optimize();
     }
 

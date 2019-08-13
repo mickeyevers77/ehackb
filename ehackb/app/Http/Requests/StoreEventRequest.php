@@ -14,7 +14,11 @@ class StoreEventRequest extends FormRequest
     public function rules()
     {
         return [
-
+            'title'             => ['required', 'string', 'max:255'],
+            'speaker'           => ['required', 'string', 'max:255'],
+            'short_description' => ['required', 'string'],
+            'long_description'  => ['required', 'string'],
+            'slots'             => ['required', 'numeric'],
         ];
     }
 }

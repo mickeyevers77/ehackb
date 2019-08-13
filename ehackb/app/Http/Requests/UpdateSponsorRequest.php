@@ -14,7 +14,8 @@ class UpdateSponsorRequest extends FormRequest
     public function rules()
     {
         return [
-
+            'title' => ['required', 'string', 'max:255'],
+            'link'  => ['required', 'string', 'max:255'],
         ];
     }
 }

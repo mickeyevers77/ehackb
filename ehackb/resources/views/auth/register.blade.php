@@ -75,8 +75,20 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="subscribe" id="subscribe" checked>
+
+                                    <label class="form-check-label" for="subscribe">
+                                        {{ __('Subscribe to newsletter') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0 justify-content-center">
+                            <div class="col-auto">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
