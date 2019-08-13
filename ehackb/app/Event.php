@@ -31,6 +31,16 @@ class Event extends Model implements HasMedia
         'ends_at',
     ];
 
+    public function starts_at_date_time_local()
+    {
+        return $this->starts_at ? $this->starts_at->toDateTimeLocalString() : null;
+    }
+
+    public function ends_at_date_time_local()
+    {
+        return $this->ends_at ? $this->ends_at->toDateTimeLocalString() : null;
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class);
@@ -56,6 +66,10 @@ class Event extends Model implements HasMedia
         $this->addMediaConversion('home')
             ->width(180)
             ->height(120)
+            ->optimize();
+
+        $this->addMediaConversion('detail')
+            ->width(960)
             ->optimize();
     }
 

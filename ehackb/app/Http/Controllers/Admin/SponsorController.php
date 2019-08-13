@@ -31,13 +31,11 @@ class SponsorController extends Controller
         $sponsor->fill([
             'title' => $request['title'],
             'link'  => $request['link'],
-            'image' => '',
         ]);
         $sponsor->save();
 
         if ($request->has('image')) {
             $sponsor->addMediaFromRequest('image')->toMediaCollection('image');
-            $sponsor->save();
         }
 
         return redirect()->route('sponsors.index');
@@ -59,13 +57,11 @@ class SponsorController extends Controller
         $sponsor->update([
             'title' => $request['title'],
             'link'  => $request['link'],
-            'image' => '',
         ]);
         $sponsor->save();
 
         if ($request->has('image')) {
             $sponsor->addMediaFromRequest('image')->toMediaCollection('image');
-            $sponsor->save();
         }
 
         return redirect()->route('sponsors.index');

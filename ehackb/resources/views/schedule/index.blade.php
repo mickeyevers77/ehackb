@@ -8,10 +8,10 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            @foreach(\App\Event::all() as $event)
+            @foreach(\App\Event::all()->sortBy('starts_at') as $event)
                 <div class="col-12 col-md-10 col-lg-8">
                     <div class="card mb-4">
-                        <a href="/schedule/{{ $event->id }}" class="card-body">
+                        <a href="/schedule/{{ $event->id }}" class="card-body text-dark">
                             <div class="row">
                                 @if($event->getImage())
                                     <div class="col-auto">

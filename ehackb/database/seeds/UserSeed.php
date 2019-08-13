@@ -10,8 +10,8 @@ class UserSeed extends Seeder
         $faker = Faker\Factory::create();
 
         User::create([
-            'first_name' => $faker->firstName,
-            'last_name'  => $faker->lastName,
+            'first_name' => 'Mickey',
+            'last_name'  => 'Evers',
             'email'      => 'admin@test.be',
             'password'   => bcrypt('admin@test.be'),
             'is_admin'   => true,

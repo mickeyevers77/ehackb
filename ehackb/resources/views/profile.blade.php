@@ -3,6 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <div class="col-auto">
+                <h2 class="text-white m-4 text-uppercase">Profile</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Profile') }}</div>
@@ -55,7 +60,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-dark">
                                         {{ __('Update') }}
                                     </button>
                                 </div>

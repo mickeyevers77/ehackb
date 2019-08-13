@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\News;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -30,7 +31,7 @@ class NewsController extends Controller
         $news = new News();
         $news->fill([
             'title'             => $request['title'],
-            'image'             => '',
+            'published_at'      => $request['published_at'] ? Carbon::parse($request['published_at']) : null,
             'short_description' => $request['short_description'],
             'long_description'  => $request['long_description'],
         ]);
@@ -38,7 +39,6 @@ class NewsController extends Controller
 
         if ($request->has('image')) {
             $news->addMediaFromRequest('image')->toMediaCollection('image');
-            $news->save();
         }
 
         return redirect()->route('news.index');
@@ -59,7 +59,7 @@ class NewsController extends Controller
     {
         $news->update([
             'title'             => $request['title'],
-            'image'             => '',
+            'published_at'      => $request['published_at'] ? Carbon::parse($request['published_at']) : null,
             'short_description' => $request['short_description'],
             'long_description'  => $request['long_description'],
         ]);
@@ -67,7 +67,6 @@ class NewsController extends Controller
 
         if ($request->has('image')) {
             $news->addMediaFromRequest('image')->toMediaCollection('image');
-            $news->save();
         }
 
         return redirect()->route('news.index');

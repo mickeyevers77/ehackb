@@ -6,6 +6,7 @@ use App\Event;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
@@ -32,7 +33,8 @@ class EventController extends Controller
         $event->fill([
             'title'             => $request['title'],
             'speaker'           => $request['speaker'],
-            'image'             => '',
+            'starts_at'         => Carbon::parse($request['starts_at']),
+            'ends_at'           => Carbon::parse($request['ends_at']),
             'short_description' => $request['short_description'],
             'long_description'  => $request['long_description'],
             'slots'             => $request['slots'],
@@ -41,7 +43,6 @@ class EventController extends Controller
 
         if ($request->has('image')) {
             $event->addMediaFromRequest('image')->toMediaCollection('image');
-            $event->save();
         }
 
         return redirect()->route('events.index');
@@ -63,7 +64,8 @@ class EventController extends Controller
         $event->update([
             'title'             => $request['title'],
             'speaker'           => $request['speaker'],
-            'image'             => '',
+            'starts_at'         => Carbon::parse($request['starts_at']),
+            'ends_at'           => Carbon::parse($request['ends_at']),
             'short_description' => $request['short_description'],
             'long_description'  => $request['long_description'],
             'slots'             => $request['slots'],
@@ -72,7 +74,6 @@ class EventController extends Controller
 
         if ($request->has('image')) {
             $event->addMediaFromRequest('image')->toMediaCollection('image');
-            $event->save();
         }
 
         return redirect()->route('events.index');

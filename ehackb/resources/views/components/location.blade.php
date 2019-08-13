@@ -1,7 +1,7 @@
 <div id="location" class="mt-5">
     <div id="location-overlay" class="text-center text-white p-5">
         <h2>LOCATION</h2>
-        <p class="mt-4 mb-4">Nijverheidskaai 170
+        <p class="mt-4 mb-4 font-weight-bold">Nijverheidskaai 170
             <br>1070 Anderlecht</p>
         <div class="container">
             <div class="row justify-content-center">

@@ -10,12 +10,14 @@ class NewsSeed extends Seeder
         $faker = Faker\Factory::create();
 
         foreach (range(1, 6) as $item) {
-            News::create([
+            $news = News::create([
                 'title'             => $faker->text(24),
                 'short_description' => $faker->text(140),
                 'long_description'  => $faker->paragraphs(3, true),
                 'published_at'      => now()
             ]);
+
+            $news->addMediaFromUrl($faker->imageUrl(960, 640, 'abstract'))->toMediaCollection('image');
         }
     }
 }

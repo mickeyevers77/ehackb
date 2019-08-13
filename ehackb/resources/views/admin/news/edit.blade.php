@@ -30,9 +30,23 @@
                                 <label for="image" class="col-md-4 col-form-label text-md-right">Image</label>
 
                                 <div class="col-md-6">
-                                    <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') ?? $news->image }}" required autocomplete="image" autofocus>
+                                    <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') ?? $news->image }}" autocomplete="image" autofocus>
 
                                     @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="published_at" class="col-md-4 col-form-label text-md-right">Published At</label>
+
+                                <div class="col-md-6">
+                                    <input id="published_at" type="datetime-local" class="form-control @error('published_at') is-invalid @enderror" name="published_at" value="{{ old('published_at') ?? $news->published_at_date_time_local() }}" autocomplete="published_at" autofocus>
+
+                                    @error('published_at')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -70,7 +84,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-dark">
                                         Save
                                     </button>
                                 </div>

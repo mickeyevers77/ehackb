@@ -27,6 +27,11 @@ class News extends Model implements HasMedia
         'published_at',
     ];
 
+    public function published_at_date_time_local()
+    {
+        return $this->published_at ? $this->published_at->toDateTimeLocalString() : null;
+    }
+
     public function registerMediaCollections()
     {
         $this->addMediaCollection('image')->singleFile();

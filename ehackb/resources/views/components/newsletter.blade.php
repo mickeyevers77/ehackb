@@ -58,7 +58,7 @@
 
                             <div class="form-group row mb-0 justify-content-center">
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-dark">
                                         Subscribe to newsletter
                                     </button>
 

@@ -9,7 +9,7 @@
             @foreach(\App\Sponsor::all() as $sponsor)
                 <div class="col-12 col-md-4">
                     <div class="mb-4 text-center">
-                        <a href="{{ $sponsor->link }}" target="_blank" class="text-white">
+                        <a href="{{ $sponsor->link }}" target="_blank" class="text-dark">
                             @if($sponsor->getImage())
                                 <img class="mw-100" alt="{{ $sponsor->title }}" src="{{ $sponsor->getImage('home') }}">
                             @else

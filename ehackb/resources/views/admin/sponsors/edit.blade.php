@@ -30,7 +30,7 @@
                                 <label for="image" class="col-md-4 col-form-label text-md-right">Image</label>
 
                                 <div class="col-md-6">
-                                    <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') ?? $sponsor->image }}" required autocomplete="image" autofocus>
+                                    <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') ?? $sponsor->image }}" autocomplete="image" autofocus>
 
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-dark">
                                         Save
                                     </button>
                                 </div>
