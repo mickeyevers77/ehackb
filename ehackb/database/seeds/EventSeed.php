@@ -14,7 +14,7 @@ class EventSeed extends Seeder
                 'title'             => $faker->text(24),
                 'speaker'           => $faker->name,
                 'short_description' => $faker->text(140),
-                'long_description'  => $faker->paragraphs(3, true),
+                'long_description'  => $faker->text(500),
                 'slots'             => $faker->numberBetween(1, 20) * 10,
                 'starts_at'         => now(),
                 'ends_at'           => now(),

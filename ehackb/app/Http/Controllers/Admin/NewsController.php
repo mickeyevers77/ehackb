@@ -41,7 +41,9 @@ class NewsController extends Controller
             $news->addMediaFromRequest('image')->toMediaCollection('image');
         }
 
-        return redirect()->route('news.index');
+        return redirect()
+            ->route('news.index')
+            ->with('message', 'News created!');
     }
 
     public function show($id)
@@ -69,12 +71,16 @@ class NewsController extends Controller
             $news->addMediaFromRequest('image')->toMediaCollection('image');
         }
 
-        return redirect()->route('news.index');
+        return redirect()
+            ->route('news.index')
+            ->with('message', 'News updated!');
     }
 
     public function destroy(News $news)
     {
         $news->delete();
-        return redirect()->route('news.index');
+        return redirect()
+            ->route('news.index')
+            ->with('message', 'News deleted!');
     }
 }

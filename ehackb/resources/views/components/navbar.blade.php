@@ -22,6 +22,7 @@
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="/admin/users">Users</a>
+                            <a class="dropdown-item" href="/admin/subscribers">Subscribers</a>
                             <a class="dropdown-item" href="/admin/events">Events</a>
                             <a class="dropdown-item" href="/admin/news">News</a>
                             <a class="dropdown-item" href="/admin/sponsors">Sponsors</a>

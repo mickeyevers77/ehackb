@@ -20,24 +20,22 @@
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
                             <th scope="col">E-Mail Address</th>
-                            <th scope="col">Is Admin</th>
                             <th class="text-right" scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(\App\User::all() as $user)
+                        @foreach(\App\Subscriber::all() as $subscriber)
                             <tr>
-                                <td>{{ $user->first_name }}</td>
-                                <td>{{ $user->last_name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->is_admin }}</td>
+                                <td>{{ $subscriber->first_name }}</td>
+                                <td>{{ $subscriber->last_name }}</td>
+                                <td>{{ $subscriber->email }}</td>
                                 <td class="text-right">
-                                    <label class="d-inline btn btn-sm btn-danger pointer" for="delete-{{ $user->id }}">Delete</label>
+                                    <label class="d-inline btn btn-sm btn-danger pointer" for="delete-{{ $subscriber->id }}">Delete</label>
 
-                                    <form class="hidden" action="{{ route('users.destroy', $user) }}" method="POST">
+                                    <form class="hidden" action="{{ route('subscribers.destroy', $subscriber) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <input type="submit" id="delete-{{ $user->id }}" class="d-none">
+                                        <input type="submit" id="delete-{{ $subscriber->id }}" class="d-none">
                                     </form>
                                 </td>
                             </tr>

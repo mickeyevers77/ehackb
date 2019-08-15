@@ -45,7 +45,9 @@ class EventController extends Controller
             $event->addMediaFromRequest('image')->toMediaCollection('image');
         }
 
-        return redirect()->route('events.index');
+        return redirect()
+            ->route('events.index')
+            ->with('message', 'Event created!');
     }
 
     public function show($id)
@@ -76,13 +78,17 @@ class EventController extends Controller
             $event->addMediaFromRequest('image')->toMediaCollection('image');
         }
 
-        return redirect()->route('events.index');
+        return redirect()
+            ->route('events.index')
+            ->with('message', 'Event updated!');
     }
 
     public function destroy(Event $event)
     {
         $event->delete();
-        return redirect()->route('events.index');
+        return redirect()
+            ->route('events.index')
+            ->with('message', 'Event deleted!');
     }
 
     public function enroll(Event $event)

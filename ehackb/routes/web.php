@@ -24,12 +24,13 @@ Route::get('/profile', 'ProfileController@index');
 Route::post('/profile', 'ProfileController@update');
 Route::post('/subscribe', 'HomeController@subscribe');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::get('/events/{event}/enroll', 'Admin\EventController@enroll')->name('events.enroll');
+Route::get('/events/{event}/cancel', 'Admin\EventController@cancel')->name('events.cancel');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('news', 'Admin\NewsController');
     Route::resource('users', 'Admin\UserController');
+    Route::resource('subscribers', 'Admin\SubscriberController');
     Route::resource('events', 'Admin\EventController');
     Route::resource('sponsors', 'Admin\SponsorController');
-
-    Route::get('/events/{event}/enroll', 'Admin\EventController@enroll')->name('events.enroll');
-    Route::get('/events/{event}/cancel', 'Admin\EventController@cancel')->name('events.cancel');
 });

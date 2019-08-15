@@ -10,9 +10,14 @@
         @if($news->getImage())
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 col-lg-8">
-                    <img class="image w-100" alt="{{ $news->title }}" src="{{ $news->getImage('detail') }}">
+                    <img class="image w-100 card" alt="{{ $news->title }}" src="{{ $news->getImage('detail') }}">
                 </div>
             </div>
         @endif
+        <div class="row justify-content-center text-white my-5">
+            <div class="col-12 col-md-10 col-lg-8">
+                {!! $news->long_description !!}
+            </div>
+        </div>
     </div>
 @endsection

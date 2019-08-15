@@ -13,7 +13,7 @@ class NewsSeed extends Seeder
             $news = News::create([
                 'title'             => $faker->text(24),
                 'short_description' => $faker->text(140),
-                'long_description'  => $faker->paragraphs(3, true),
+                'long_description'  => $faker->text(500),
                 'published_at'      => now()
             ]);
 

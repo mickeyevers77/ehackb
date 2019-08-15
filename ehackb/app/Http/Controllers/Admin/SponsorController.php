@@ -38,7 +38,9 @@ class SponsorController extends Controller
             $sponsor->addMediaFromRequest('image')->toMediaCollection('image');
         }
 
-        return redirect()->route('sponsors.index');
+        return redirect()
+            ->route('sponsors.index')
+            ->with('message', 'Sponsor created!');
     }
 
     public function show($id)
@@ -64,12 +66,16 @@ class SponsorController extends Controller
             $sponsor->addMediaFromRequest('image')->toMediaCollection('image');
         }
 
-        return redirect()->route('sponsors.index');
+        return redirect()
+            ->route('sponsors.index')
+            ->with('message', 'Sponsor updated!');
     }
 
     public function destroy(Sponsor $sponsor)
     {
         $sponsor->delete();
-        return redirect()->route('sponsors.index');
+        return redirect()
+            ->route('sponsors.index')
+            ->with('message', 'Sponsor deleted!');
     }
 }
