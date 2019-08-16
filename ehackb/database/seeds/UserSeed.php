@@ -12,16 +12,16 @@ class UserSeed extends Seeder
         User::create([
             'first_name' => 'Mickey',
             'last_name'  => 'Evers',
-            'email'      => 'admin@test.be',
-            'password'   => bcrypt('admin@test.be'),
+            'email'      => 'admin@ehackb.be',
+            'password'   => bcrypt('12345'),
             'is_admin'   => true,
         ]);
 
         User::create([
             'first_name' => $faker->firstName,
             'last_name'  => $faker->lastName,
-            'email'      => 'user@test.be',
-            'password'   => bcrypt('user@test.be'),
+            'email'      => 'gebruiker@ehackb.be',
+            'password'   => bcrypt('67890'),
             'is_admin'   => false,
         ]);
     }
