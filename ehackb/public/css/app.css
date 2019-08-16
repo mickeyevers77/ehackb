@@ -11112,13 +11112,14 @@ a.text-dark:focus {
   font-weight: bold;
 }
 
-h1 {
+.custom-h1 {
   font-size: 64px;
   font-weight: bold;
   text-shadow: #b9151e 4px 4px;
   line-height: 16px;
 }
 
+h1,
 h2 {
   text-shadow: #00000033 4px 4px;
   font-weight: bold;

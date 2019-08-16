@@ -5,7 +5,7 @@
         <div class="row justify-content-center mb-4">
             <div class="col-auto">
                 <img alt="" src="/img/logoSimple.svg" style="height: 200px;">
-                <h1 class="text-primary text-center text-uppercase">EhackB</h1>
+                <h1 class="text-primary text-center text-uppercase custom-h1">EhackB</h1>
                 <h2 class="text-secondary text-center text-uppercase">3 - 4 may</h2>
             </div>
         </div>
@@ -28,6 +28,10 @@
 
                                 <div class="col">
                                     <h4>{{ $news->title }}</h4>
+                                    <div class="mb-2 text-secondary">
+                                        <i class="far fa-calendar-alt mr-1"></i>
+                                        {{ $news->published_at->format('d.m.Y H:i') }}
+                                    </div>
                                     <div>{{ $news->short_description }}</div>
                                 </div>
                             </div>

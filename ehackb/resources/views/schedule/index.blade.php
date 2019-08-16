@@ -21,6 +21,14 @@
 
                                 <div class="col">
                                     <h4>{{ $event->title }}</h4>
+                                    <div class="text-secondary">
+                                        <i class="far fa-calendar-alt mr-1"></i>
+                                        {{ $event->starts_at->format('d.m.Y H:i') . ' - ' . $event->ends_at->format('H:i') }}
+                                    </div>
+                                    <div class="mb-2 text-primary">
+                                        <i class="fas fa-user mr-1"></i>
+                                        {{ $event->speaker }}
+                                    </div>
                                     <div>{{ $event->short_description }}</div>
                                 </div>
                             </div>

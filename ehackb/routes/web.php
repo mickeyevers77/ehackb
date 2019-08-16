@@ -27,6 +27,9 @@ Route::post('/subscribe', 'HomeController@subscribe');
 Route::get('/events/{event}/enroll', 'Admin\EventController@enroll')->name('events.enroll');
 Route::get('/events/{event}/cancel', 'Admin\EventController@cancel')->name('events.cancel');
 
+Route::post('/news/{news}/comment', 'Admin\NewsController@comment')->name('news.comment');
+Route::post('/events/{event}/comment', 'Admin\EventController@comment')->name('events.comment');
+
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('news', 'Admin\NewsController');
     Route::resource('users', 'Admin\UserController');

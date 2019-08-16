@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\News;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
@@ -82,5 +84,17 @@ class NewsController extends Controller
         return redirect()
             ->route('news.index')
             ->with('message', 'News deleted!');
+    }
+
+    public function comment(Request $request, News $news)
+    {
+        $comment = new Comment();
+        $comment->fill([
+            'user_id' => auth()->id(),
+            'body'    => $request['body'],
+        ]);
+
+        $news->comments()->save($comment);
+        return redirect()->back();
     }
 }

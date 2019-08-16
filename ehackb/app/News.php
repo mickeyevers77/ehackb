@@ -27,6 +27,11 @@ class News extends Model implements HasMedia
         'published_at',
     ];
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
     public function published_at_date_time_local()
     {
         return $this->published_at ? $this->published_at->toDateTimeLocalString() : null;

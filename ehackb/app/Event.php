@@ -46,6 +46,11 @@ class Event extends Model implements HasMedia
         return $this->belongsToMany(User::class);
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
     public function availableSlots()
     {
         return $this->slots - $this->users()->count();

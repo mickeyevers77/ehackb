@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-auto">
-                <h2 class="text-white mt-4 mb-4 text-uppercase">Users</h2>
+                <h2 class="text-white mt-4 mb-4 text-uppercase">Subscribers</h2>
             </div>
         </div>
 

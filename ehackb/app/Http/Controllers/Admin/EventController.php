@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Comment;
 use App\Event;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
@@ -100,6 +102,18 @@ class EventController extends Controller
     public function cancel(Event $event)
     {
         $event->users()->detach(Auth::user());
+        return redirect()->back();
+    }
+
+    public function comment(Request $request, Event $event)
+    {
+        $comment = new Comment();
+        $comment->fill([
+            'user_id'        => auth()->id(),
+            'body'           => $request['body'],
+        ]);
+
+        $event->comments()->save($comment);
         return redirect()->back();
     }
 }
